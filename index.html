@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teja Punna — Developer Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f1ea;        /* warm paper bg */
+    --card:#ffffff;
+    --ink:#1c1a17;          /* near-black text */
+    --muted:#8c877d;        /* secondary text */
+    --line:#e9e4d9;         /* hairlines */
+    --accent:#2f4bff;       /* cobalt */
+    --accent-soft:#e7eaff;
+    --good:#0f7a5a;         /* green */
+    --good-soft:#dcf1e9;
+    --warn:#b4541a;         /* amber */
+    --warn-soft:#f7e6da;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(28,26,23,.04), 0 12px 32px rgba(28,26,23,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Plus Jakarta Sans",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding:28px;
+  }
+  .shell{
+    max-width:1320px;margin:0 auto;
+    background:linear-gradient(180deg,#fbfaf6,#f4f1ea);
+    border-radius:32px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    display:grid;grid-template-columns:288px 1fr;
+    overflow:hidden;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .side{padding:30px 22px;display:flex;flex-direction:column;gap:22px;border-right:1px solid var(--line)}
+  .logo{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:600;font-size:21px;letter-spacing:-.02em}
+  .logo .mark{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:"Plus Jakarta Sans";font-weight:700;font-size:15px}
+  .logo .cursor{color:var(--accent)}
+
+  .profile-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 20px;text-align:center;position:relative;overflow:hidden;
+  }
+  .profile-card::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;border:1px solid var(--line);opacity:.6}
+  .ava-wrap{position:relative;width:84px;margin:0 auto 14px}
+  .ava{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px dashed var(--line);padding:3px;background:var(--paper)}
+  .rating{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;box-shadow:var(--shadow);display:flex;gap:4px;align-items:center}
+  .rating .star{color:var(--accent)}
+  .profile-card h3{font-family:"Fraunces",serif;font-size:20px;font-weight:600;margin-top:8px;letter-spacing:-.02em}
+  .profile-card p{color:var(--muted);font-size:13px;margin-top:3px}
+
+  .nav{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 10px;display:flex;flex-direction:column;gap:2px}
+  .nav a{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:13px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14.5px;position:relative;transition:.18s}
+  .nav a svg{width:19px;height:19px;stroke-width:1.9}
+  .nav a:hover{background:var(--paper);color:var(--ink)}
+  .nav a.active{color:var(--accent);background:var(--accent-soft)}
+  .nav a.active::before{content:"";position:absolute;left:-10px;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--accent)}
+
+  .promo{margin-top:auto;background:var(--ink);color:#fff;border-radius:var(--radius);padding:22px 20px;position:relative;overflow:hidden}
+  .promo::after{content:"";position:absolute;right:-30px;bottom:-30px;width:110px;height:110px;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+  .promo h4{font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+  .promo p{color:rgba(255,255,255,.6);font-size:12.5px;margin:5px 0 14px}
+  .promo button{background:#fff;color:var(--ink);border:0;border-radius:30px;padding:9px 18px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:13px;cursor:pointer}
+
+  /* ---------- MAIN ---------- */
+  .main{padding:30px 34px 40px;display:flex;flex-direction:column;gap:26px}
+  .topbar{display:flex;align-items:center;justify-content:space-between}
+  .crumb{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);font-weight:500}
+  .crumb b{color:var(--ink);font-weight:700}
+  .crumb svg{width:15px;height:15px;opacity:.5}
+  .iconbtns{display:flex;gap:10px}
+  .iconbtns button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;position:relative}
+  .iconbtns button svg{width:18px;height:18px}
+  .dot{position:absolute;top:11px;right:12px;width:7px;height:7px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+
+  .hero{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:300px 1px 1fr;gap:32px;box-shadow:var(--shadow)}
+  .hero-id{display:flex;flex-direction:column;align-items:flex-start}
+  .hero-id img{width:108px;height:108px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .hero-id h1{font-family:"Fraunces",serif;font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:16px}
+  .hero-id .mail{color:var(--muted);font-size:14px;margin-top:4px}
+  .hero-id .edit{margin-top:16px;border:1.5px solid var(--accent);color:var(--accent);background:transparent;border-radius:30px;padding:9px 22px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:13.5px;cursor:pointer;transition:.18s}
+  .hero-id .edit:hover{background:var(--accent);color:#fff}
+  .divider{background:var(--line)}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 20px;align-content:center}
+  .fact label{display:block;color:var(--muted);font-size:13px;margin-bottom:5px}
+  .fact span{font-size:16px;font-weight:700}
+  .fact a{color:var(--accent);text-decoration:none}
+
+  .section-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:-6px}
+  .section-h h2{font-family:"Fraunces",serif;font-size:21px;font-weight:600;letter-spacing:-.01em}
+  .section-h .meta{color:var(--muted);font-size:13.5px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+  .stat label{display:block;color:var(--muted);font-size:13.5px;margin-bottom:8px}
+  .stat .val{font-family:"Fraunces",serif;font-size:26px;font-weight:600;letter-spacing:-.01em}
+  .stat .val small{font-family:"Plus Jakarta Sans";font-size:12px;font-weight:600;color:var(--muted);margin-left:4px}
+  .stat .tag{font-size:12.5px;font-weight:700;margin-top:8px}
+  .stat .tag.g{color:var(--good)}.stat .tag.w{color:var(--warn)}
+
+  .tablewrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 8px 14px;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;color:var(--muted);font-size:12.5px;font-weight:600;padding:16px 18px;border-bottom:1px solid var(--line)}
+  td{padding:16px 18px;font-size:14px;font-weight:500;border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--paper)}
+  td .proj{font-weight:700}
+  .pill{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:700}
+  .pill.g{background:var(--good-soft);color:var(--good)}
+  .pill.w{background:var(--warn-soft);color:var(--warn)}
+  .pill.a{background:var(--accent-soft);color:var(--accent)}
+  .sev{border-left:3px solid;border-radius:3px;padding:3px 12px;font-size:12px;font-weight:700;display:inline-block}
+  .sev.hi{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
+  .sev.lo{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+  td a.link{color:var(--ink);text-decoration:none;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+  td a.link:hover{color:var(--accent)}
+  td a.link svg{width:15px;height:15px}
+
+  @media(max-width:1080px){
+    .shell{grid-template-columns:1fr}
+    .side{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--line)}
+    .promo{margin-top:0}
+    .hero{grid-template-columns:1fr}.divider{display:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:680px){.facts{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}.main{padding:22px}body{padding:12px}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="logo"><span class="mark">TP</span> Teja Punna<span class="cursor">_</span></div>
+
+    <div class="profile-card">
+      <div class="ava-wrap">
+        <img class="ava" src="https://avatars.githubusercontent.com/u/44221580?v=4" alt="Teja Punna">
+        <span class="rating"><span class="star">★</span>4.9</span>
+      </div>
+      <h3>Teja Punna</h3>
+      <p>Full-Stack &amp; Mobile Developer</p>
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Overview</a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18v13H3zM8 7V4h8v3"/></svg> Projects</a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 17l6-6 4 4 6-7"/></svg> Skills</a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Activity</a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 00-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 00-1.7-1L14.5 3h-5l-.3 2.6a7 7 0 00-1.7 1l-2.4-1-2 3.4L3.1 11a7 7 0 000 2l-2 1.6 2 3.4 2.4-1a7 7 0 001.7 1L9.5 21h5l.3-2.6a7 7 0 001.7-1l2.4 1 2-3.4-2-1.6a7 7 0 00.1-1z"/></svg> Settings</a>
+    </nav>
+
+    <div class="promo">
+      <h4>Open to Work</h4>
+      <p>Available for freelance &amp; full-time roles.</p>
+      <button onclick="location.href='https://tejapunna.in'">Get in Touch</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="topbar">
+      <div class="crumb">
+        Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg>
+        Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg>
+        <b>Teja Punna</b>
+      </div>
+      <div class="iconbtns">
+        <button><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg></button>
+        <button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-id">
+        <img src="https://avatars.githubusercontent.com/u/44221580?v=4" alt="Teja Punna">
+        <h1>Teja Punna</h1>
+        <span class="mail">hello@tejapunna.in</span>
+        <button class="edit" onclick="location.href='https://tejapunna.in'">View Portfolio</button>
+      </div>
+      <div class="divider"></div>
+      <div class="facts">
+        <div class="fact"><label>Role</label><span>Software Engineer</span></div>
+        <div class="fact"><label>Location</label><span>India 🇮🇳</span></div>
+        <div class="fact"><label>Experience</label><span>3+ Years</span></div>
+        <div class="fact"><label>Status</label><span style="color:var(--good)">Available</span></div>
+        <div class="fact"><label>Focus</label><span>Flutter · Web</span></div>
+        <div class="fact"><label>Website</label><span><a href="https://tejapunna.in">tejapunna.in</a></span></div>
+        <div class="fact"><label>GitHub</label><span><a href="https://github.com/tejapunna">@tejapunna</a></span></div>
+        <div class="fact"><label>X / Twitter</label><span><a href="https://x.com/punna_teja">@punna_teja</a></span></div>
+        <div class="fact"><label>Open Source</label><span>4 Packages</span></div>
+      </div>
+    </section>
+
+    <!-- TECH STACK (vitals-style cards) -->
+    <div class="section-h"><h2>Tech Stack</h2></div>
+    <div class="stats">
+      <div class="stat"><label>Flutter / Dart</label><div class="val">Expert</div><div class="tag g">Primary stack</div></div>
+      <div class="stat"><label>Next.js / React</label><div class="val">Advanced</div><div class="tag g">Production-ready</div></div>
+      <div class="stat"><label>Node.js</label><div class="val">Advanced</div><div class="tag g">APIs &amp; tooling</div></div>
+      <div class="stat"><label>Linux</label><div class="val">Power user<small>shell</small></div><div class="tag w">Daily driver</div></div>
+    </div>
+
+    <!-- PROJECTS (history-style table) -->
+    <div class="section-h"><h2>Featured Projects</h2><span class="meta">4 repositories</span></div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Project</th><th>Language</th><th>Type</th><th>Stars</th><th>Status</th><th>Link</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="proj">glassmorphic_ui</td>
+            <td>Dart</td>
+            <td><span class="sev hi">UI Kit</span></td>
+            <td>1</td>
+            <td><span class="pill a">Active</span></td>
+            <td><a class="link" href="https://github.com/tejapunna/glassmorphic_ui"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>Open</a></td>
+          </tr>
+          <tr>
+            <td class="proj">neural_haptics</td>
+            <td>Dart</td>
+            <td><span class="sev lo">Plugin</span></td>
+            <td>0</td>
+            <td><span class="pill g">Stable</span></td>
+            <td><a class="link" href="https://github.com/tejapunna/neural_haptics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>Open</a></td>
+          </tr>
+          <tr>
+            <td class="proj">futuristic_onboarding</td>
+            <td>Dart</td>
+            <td><span class="sev lo">Widget</span></td>
+            <td>0</td>
+            <td><span class="pill g">Stable</span></td>
+            <td><a class="link" href="https://github.com/tejapunna/futuristic_onboarding"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>Open</a></td>
+          </tr>
+          <tr>
+            <td class="proj">digit_roller</td>
+            <td>C++ / Dart</td>
+            <td><span class="sev hi">Widget</span></td>
+            <td>0</td>
+            <td><span class="pill a">Active</span></td>
+            <td><a class="link" href="https://github.com/tejapunna/digit_roller"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>Open</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ponytail: only interactivity the layout needs — active nav highlight
+  document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector('.nav a.active')?.classList.remove('active');
+    a.classList.add('active');
+  }));
+</script>
+</body>
+</html>
