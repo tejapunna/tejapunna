@@ -10,6 +10,8 @@ Building polished products across Flutter, Next.js, and Node.js — and explorin
 [![X](https://img.shields.io/badge/X-@punna__teja-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/punna_teja)
 [![Instagram](https://img.shields.io/badge/Instagram-teja__punna-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/teja__punna/)
 
+[![Live Profile Dashboard](https://img.shields.io/badge/▶_Live_Profile_Dashboard-1c1a17?style=for-the-badge)](https://tejapunna.github.io/profile-site/)
+
 </div>
 
 ---
